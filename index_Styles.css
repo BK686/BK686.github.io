@@ -1,0 +1,79 @@
+body, html {
+                margin: 0;
+                padding: 0;
+            }
+
+            .bg-image {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 120%;
+                background-size: cover;
+                background-position: center;
+                transition: opacity 1.5s ease-in-out;
+                opacity: 0;
+                z-index: 0;
+            }
+
+            .bg-image.active {
+                opacity: 1;
+            }
+
+            /* Dock bar styling */
+            .dock-container {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 100px; /* Hover area for larger dock */
+                z-index: 20;
+            }
+
+            .dock {
+                position: fixed;
+                top: -300px; /* Hide larger dock */
+                left: 0;
+                right: 0;
+                height: 33.33vh; /* 1/3 of viewport height */
+                display: flex;
+                justify-content: space-between; /* Align items to both ends */
+                gap: 1.5rem; /* Spacing for items */
+                padding: 1.5rem 2rem; /* Padding for spacing */
+                background-color: #000; /* Black background */
+                transition: top 0.5s ease-in-out;
+                z-index: 15;
+                align-items: center; /* Center items vertically */
+            }
+
+            .dock-container:hover .dock {
+                top: 0; /* Slide down on hover */
+            }
+
+            .dock-item {
+                display: inline-flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                min-width: 100px; /* Smaller for smaller images */
+                position: relative; /* For z-index control */
+            }
+
+            .dock-item img {
+                width: 120px; /* Smaller initial size */
+                height: 150px; /* Smaller initial size, same aspect ratio */
+                object-fit: contain; /* Ensure full image is displayed */
+                transition: transform 0.3s ease;
+                cursor: pointer; /* Indicate clickable image */
+            }
+
+            .dock-item:hover img {
+                transform: scale(1.6); /* Zoom on hover */
+                z-index: 16; /* Ensure image is above other elements */
+            }
+
+            .dock-item span {
+                color: #f1f5f9; /* Tailwind slate-50 */
+                font-size: 1rem; /* Smaller font size */
+                margin-top: 0.5rem; /* Adjusted spacing */
+            }
